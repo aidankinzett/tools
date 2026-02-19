@@ -16,6 +16,7 @@ export function SteamImportPanel({ steamProfile, setSteamProfile, steamImport, i
           value={steamProfile}
           onChange={(e) => setSteamProfile(e.target.value)}
           placeholder="Steam profile URL, vanity name, or ID..."
+          aria-label="Steam profile URL, vanity name, or ID"
           onKeyDown={(e) => { if (e.key === "Enter" && steamProfile.trim() && !steamImport.isPending) steamImport.mutate(steamProfile.trim()) }}
           style={{
             flex: 1, padding: "8px 12px", borderRadius: 6,
