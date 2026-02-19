@@ -8,14 +8,13 @@ interface AchievementViewProps {
   completed: Record<string, boolean>
   onToggle: (id: string) => void
   onReset: () => void
-  saving: boolean
   steamProfile: string
   setSteamProfile: (v: string) => void
   steamImport: UseMutationResult<unknown[], Error, string>
   importCount: number | null
 }
 
-export function AchievementView({ completed, onToggle, onReset, saving, steamProfile, setSteamProfile, steamImport, importCount }: AchievementViewProps) {
+export function AchievementView({ completed, onToggle, onReset, steamProfile, setSteamProfile, steamImport, importCount }: AchievementViewProps) {
   const [activeCategory, setActiveCategory] = useState("all")
   const [filterTier, setFilterTier] = useState("all")
   const [search, setSearch] = useState("")

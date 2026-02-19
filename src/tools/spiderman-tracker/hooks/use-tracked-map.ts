@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useCallback } from 'react'
 
 interface UseTrackedMapReturn {
   data: Record<string, boolean>
@@ -9,22 +9,25 @@ interface UseTrackedMapReturn {
   setAll: (data: Record<string, boolean>) => void
 }
 
-export function useTrackedMap(storageKey: string): UseTrackedMapReturn {
-  const [data, setData] = useState<Record<string, boolean>>({})
-  const [loaded, setLoaded] = useState(false)
-  const [saving, setSaving] = useState(false)
+function readStorage(key: string): Record<string, boolean> {
+  try {
+    const stored = localStorage.getItem(key)
+    if (stored) return JSON.parse(stored)
+  } catch { /* localStorage unavailable */ }
+  return {}
+}
 
-  useEffect(() => {
-    try {
-      const stored = localStorage.getItem(storageKey)
-      if (stored) setData(JSON.parse(stored))
-    } catch {}
-    setLoaded(true)
-  }, [storageKey])
+export function useTrackedMap(storageKey: string): UseTrackedMapReturn {
+  const [data, setData] = useState<Record<string, boolean>>(() => readStorage(storageKey))
+  const [saving, setSaving] = useState(false)
+  // Route has ssr: false so localStorage is always available at init
+  const loaded = true
 
   const save = useCallback((next: Record<string, boolean>) => {
     setSaving(true)
-    try { localStorage.setItem(storageKey, JSON.stringify(next)) } catch {}
+    try {
+      localStorage.setItem(storageKey, JSON.stringify(next))
+    } catch { /* localStorage unavailable */ }
     setTimeout(() => setSaving(false), 400)
   }, [storageKey])
 

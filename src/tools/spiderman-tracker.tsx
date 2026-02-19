@@ -61,7 +61,7 @@ export default function SpiderManTracker() {
         achievements.setAll(next)
       }
       setImportCount(count)
-      try { localStorage.setItem(STEAM_PROFILE_KEY, steamProfile) } catch {}
+      try { localStorage.setItem(STEAM_PROFILE_KEY, steamProfile) } catch { /* localStorage unavailable */ }
     },
   })
 
@@ -154,7 +154,6 @@ export default function SpiderManTracker() {
           completed={achievements.data}
           onToggle={achievements.toggle}
           onReset={achievements.reset}
-          saving={achievements.saving}
           steamProfile={steamProfile}
           setSteamProfile={setSteamProfile}
           steamImport={steamImport}
