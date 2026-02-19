@@ -16,8 +16,8 @@ export const SUITS: Suit[] = [
 
   // === BASE GAME — LEVEL-BASED ===
   { id: "noir", name: "Noir Suit", category: "Base Game", unlock: "Level 3 — 1 Backpack Token, 1 Base Token", power: "Sound of Silence", powerDesc: "Enemies cannot call for backup." },
-  { id: "scarlet_spider", name: "Scarlet Spider Suit", category: "Base Game", unlock: "Level 4 — 3 Crime Tokens", power: "Holo Decoy", powerDesc: "Creates yourselves to distract and disorient enemies." },
-  { id: "spider_armor_mk2", name: "Spider-Armor MK II Suit", category: "Base Game", unlock: "Level 5 — 1 Base Token, 1 Landmark Token", power: "Bullet Proof", powerDesc: "Yourselves is temporarily resistant to bullet damage." },
+  { id: "scarlet_spider", name: "Scarlet Spider Suit", category: "Base Game", unlock: "Level 4 — 3 Crime Tokens", power: "Holo Decoy", powerDesc: "Creates a holographic decoy to distract and disorient enemies." },
+  { id: "spider_armor_mk2", name: "Spider-Armor MK II Suit", category: "Base Game", unlock: "Level 5 — 1 Base Token, 1 Landmark Token", power: "Bullet Proof", powerDesc: "You are temporarily resistant to bullet damage." },
   { id: "secret_war", name: "Secret War Suit", category: "Base Game", unlock: "Level 7 — 2 Backpack Tokens, 1 Base Token", power: "Arms Race", powerDesc: "Stuns all nearby enemies with electric shocks." },
   { id: "stark", name: "Stark Suit", category: "Base Game", unlock: "Level 9 — 1 Base Token, 1 Research Token", power: "Spider-Bro", powerDesc: "Deploys a spider-drone that attacks enemies." },
   { id: "negative", name: "Negative Suit", category: "Base Game", unlock: "Level 11 — 1 Base Token, 1 Research Token", power: "Negative Shockwave", powerDesc: "Launches a massive wave of negative energy." },
