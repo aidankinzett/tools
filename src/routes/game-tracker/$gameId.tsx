@@ -27,6 +27,7 @@ function GamePage() {
   const { gameId } = Route.useParams()
   const config = getGame(gameId)
 
+  // Run migration synchronously before GameTracker mounts
   useState(() => {
     if (gameId === 'spiderman-remastered') {
       migrateSpidermanData()
@@ -45,7 +46,7 @@ function GamePage() {
   return <GameTracker config={config} />
 }
 
-export const Route = createFileRoute('/$gameId')({
+export const Route = createFileRoute('/game-tracker/$gameId')({
   component: GamePage,
   ssr: false,
   head: ({ params }) => {
@@ -53,7 +54,7 @@ export const Route = createFileRoute('/$gameId')({
     const fonts = config?.theme.fonts ?? []
     const fontFamilies = fonts.map((f) => `family=${f.replace(/ /g, '+')}`).join('&')
     return {
-      meta: [{ title: config ? `${config.title} — Checkpoint` : 'Checkpoint' }],
+      meta: [{ title: config ? `${config.title} Tracker — Tools` : 'Game Tracker — Tools' }],
       links: fonts.length > 0
         ? [{ rel: 'stylesheet', href: `https://fonts.googleapis.com/css2?${fontFamilies}&display=swap` }]
         : [],
